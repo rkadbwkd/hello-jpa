@@ -24,22 +24,35 @@ public class Main {
 
         try{
 
-            //비영속 상태
-            Member member = new Member();
-            member.setId(100L);
-            member.setName("Hello?Jpa");
+//            //비영속 상태
+//            Member member = new Member();
+//            member.setId(101L);
+//            member.setName("Hello?Jpa");
+//
+//            //영속
+//            System.out.println("===Before===");
+//            em.persist(member);
+//            System.out.println("===After===");
 
-            //영속
-            System.out.println("===Before===");
-            em.persist(member);
-            System.out.println("===After===");
+//            Member findMember1 = em.find(Member.class, 101L);
+ //           Member findMember2 = em.find(Member.class, 101L);
 
-            //회원 엔티티를 영속성 컨텍스트에서 분리 , 준영속 상태
-            //em.detach(member);
+//            System.out.println("result = " + (findMember1 == findMember2));
 
-            //객체를 상제한 상태
-            //em.remove(member);
-            // 영속성 Context에 SQL 쓰기 지연 저장소에 있는 쿼리가 전송
+//            System.out.println("findMember.id = " + findMember.getId() );
+//            System.out.println("findMember.name = " + findMember.getName());
+
+              //Member member1 = new Member(150L, "A");
+              //Member member2 = new Member(160L, "B");
+
+              //em.persist(member1);
+              //em.persist(member2);
+              //System.out.println("===================================");
+
+            Member member = em.find(Member.class, 150L);
+            member.setName("Zzzzzzzzz");
+
+
             tx.commit();
 
         }

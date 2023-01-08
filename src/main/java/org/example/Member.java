@@ -14,6 +14,14 @@ public class Member {
     private String name;
     //Getter, Setter …
 
+    //JPA는 기본 생성자가 한개 있어야됨
+    public Member(){}
+
+    public Member(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }
