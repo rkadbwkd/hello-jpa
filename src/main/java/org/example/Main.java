@@ -24,34 +24,15 @@ public class Main {
 
         try{
 
-//            //비영속 상태
-//            Member member = new Member();
-//            member.setId(101L);
-//            member.setName("Hello?Jpa");
-//
-//            //영속
-//            System.out.println("===Before===");
-//            em.persist(member);
-//            System.out.println("===After===");
 
-//            Member findMember1 = em.find(Member.class, 101L);
- //           Member findMember2 = em.find(Member.class, 101L);
+            Member member = new Member(200L, "member200");
+            em.persist(member);
 
-//            System.out.println("result = " + (findMember1 == findMember2));
+            //1차 캐시 지워지지 않습니다!
+            // 영속성 컨텍스트에 쓰기 지연 SQL 저장소에 있는 SQL 쿼리르 날림
+            em.flush();
 
-//            System.out.println("findMember.id = " + findMember.getId() );
-//            System.out.println("findMember.name = " + findMember.getName());
-
-              //Member member1 = new Member(150L, "A");
-              //Member member2 = new Member(160L, "B");
-
-              //em.persist(member1);
-              //em.persist(member2);
-              //System.out.println("===================================");
-
-            Member member = em.find(Member.class, 150L);
-            member.setName("Zzzzzzzzz");
-
+            System.out.println("=======================");
 
             tx.commit();
 
