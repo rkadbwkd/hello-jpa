@@ -23,40 +23,23 @@ public class Main {
 
 
         try{
-//            Member member = new Member();
-//            member.setId(1L);
-//            member.setName("helloA");
 
-            // 조회
-            // JPA를 통해 데이터를 가져올시 1차캐시에서 관리
-            // JPA가 Transaction commit 시점에 update query 날림
-            Member findMember = em.find(Member.class, 1L);
-            System.out.println("findMember = " + findMember.getId());
-            System.out.println("findMember = " + findMember.getName());
-            //
+            //비영속 상태
+            Member member = new Member();
+            member.setId(100L);
+            member.setName("Hello?Jpa");
 
+            //영속
+            System.out.println("===Before===");
+            em.persist(member);
+            System.out.println("===After===");
 
-            //전체 조회
-            //JPA는 class로 조회 대상이 Table이 아닌 객체
-//            List<Member> findMembers = em.createQuery("select m from Member as m", Member.class)
-//                    .getResultList();
+            //회원 엔티티를 영속성 컨텍스트에서 분리 , 준영속 상태
+            //em.detach(member);
 
-            // 페이징 조회
-            List<Member> findMembers = em.createQuery("select m from Member as m", Member.class)
-                    .setFirstResult(5)
-                    .setMaxResults(8)
-                    .getResultList();
-
-
-            for (Member member : findMembers) {
-                System.out.println("member name is " + member.getName());
-            }
-
-            //수정
-            findMember.setName("hellojpa!!!!!");
-
-
-            //em.persist(member);
+            //객체를 상제한 상태
+            //em.remove(member);
+            // 영속성 Context에 SQL 쓰기 지연 저장소에 있는 쿼리가 전송
             tx.commit();
 
         }
