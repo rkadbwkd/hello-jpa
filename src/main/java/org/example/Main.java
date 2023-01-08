@@ -24,15 +24,19 @@ public class Main {
 
         try{
 
+            // 조회시 영속성 Context에 올림
+            Member member = em.find(Member.class, 150L);
+            member.setName("AAAAAA");
 
-            Member member = new Member(200L, "member200");
-            em.persist(member);
+            // 영속성 컨텍스트에서 분리
+            // 특정 엔티티만 준영속 상태로 변환
+            //em.detach(member);
+            
+            // 1차캐시 통으로 날림
+            em.clear(); 
+            Member member1 = em.find(Member.class, 150L);
 
-            //1차 캐시 지워지지 않습니다!
-            // 영속성 컨텍스트에 쓰기 지연 SQL 저장소에 있는 SQL 쿼리르 날림
-            em.flush();
 
-            System.out.println("=======================");
 
             tx.commit();
 
