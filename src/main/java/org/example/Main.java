@@ -25,16 +25,16 @@ public class Main {
         try{
 
             // 조회시 영속성 Context에 올림
-            Member member = em.find(Member.class, 150L);
-            member.setName("AAAAAA");
+            //  Member member = em.find(Member.class, 150L);
+         //   member.setName("AAAAAA");
 
             // 영속성 컨텍스트에서 분리
             // 특정 엔티티만 준영속 상태로 변환
             //em.detach(member);
             
             // 1차캐시 통으로 날림
-            em.clear(); 
-            Member member1 = em.find(Member.class, 150L);
+            //  em.clear();
+           // Member member1 = em.find(Member.class, 150L);
 
 
 
