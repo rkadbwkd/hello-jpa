@@ -1,6 +1,8 @@
 package org.example;
 
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import org.example.domain.Member;
+import org.example.domain.Order;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -23,19 +25,17 @@ public class Main {
 
 
         try{
+//
+//            //Sudo code
+//            //Order을 조회
+//            Order order = em.find(Order.class,1L);
+//            //Order에서 Member 조회
+//            Long memberId = order.getMemberId();
+//            // Member 조회 객체 지향이 아님
+//            Member member = em.find(Member.class,memberId);
 
-            // 조회시 영속성 Context에 올림
-            //  Member member = em.find(Member.class, 150L);
-         //   member.setName("AAAAAA");
-
-            // 영속성 컨텍스트에서 분리
-            // 특정 엔티티만 준영속 상태로 변환
-            //em.detach(member);
-            
-            // 1차캐시 통으로 날림
-            //  em.clear();
-           // Member member1 = em.find(Member.class, 150L);
-
+            //위 방식이 아닌
+            // Member findMember = order.getMember();
 
 
             tx.commit();
