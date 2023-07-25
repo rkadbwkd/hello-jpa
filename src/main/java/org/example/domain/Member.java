@@ -5,20 +5,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity
+@Entity // JPA 로딩시 인식(관리)
+//@Table(name = "USER")
 public class Member {
 
-    @Id @GeneratedValue
-    @Column(name = "MEMBER_ID")
+    @Id //@GeneratedValue //@Id = pk
+    //@Column(name = "MEMBER_ID")
     private Long id;
+
+    public Member(){
+
+    }
+    public Member(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     private String name;
 
-    private String city;
-
-    private String street;
-
-    private String zipcode;
+//    private String city;
+//
+//    private String street;
+//
+//    private String zipcode;
 
     public Long getId() {
         return id;
@@ -36,27 +45,27 @@ public class Member {
         this.name = name;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
+//    public String getCity() {
+//        return city;
+//    }
+//
+//    public void setCity(String city) {
+//        this.city = city;
+//    }
+//
+//    public String getStreet() {
+//        return street;
+//    }
+//
+//    public void setStreet(String street) {
+//        this.street = street;
+//    }
+//
+//    public String getZipcode() {
+//        return zipcode;
+//    }
+//
+//    public void setZipcode(String zipcode) {
+//        this.zipcode = zipcode;
+//    }
 }
